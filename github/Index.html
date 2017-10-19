@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <link rel="index" href="" title="Inicio">
+    <link rel="stylesheet" type="text/css" href="css.css">
+
+
+
+
+<div class="bg">
+</div>
+<div class="lightning flashit">
+ </div>
+
+<body onload>
+<H1 id="demo"align="center">Dispara</h1>
+
+
+<script>
+    var puntos=0;
+    var alto= prompt("numero de filas");
+    var ancho= prompt("numero de columnas");
+
+        //Se crea el array 
+        var mar = new Array(ancho);
+        for(var i=0;i<ancho;i++){
+            mar[i]=new Array(alto);
+        }
+        // se rellena el array de forma aleatoria.
+        for(var i=0;i<ancho;i++){
+            for(var j=0;j<alto;j++){
+                mar[i][j]=Math.floor((Math.random()*2));
+            }
+        }
+
+        //DIBUJAMOS LA TABLA y ponemos el id a la imagen
+    var aux="";
+        aux="<table border='1' align='center'>";
+            for (var i = 0; i < ancho; i++) {
+                aux+="<tr>"
+                for (var j = 0; j < alto; j++) {
+                    aux+="<td ><img onclick=\"pulsar(this)\" id="+i+j+" height='200' width='200' src=img/Interrogacion.jpg></img></td>"
+                }
+                aux+="</tr>"
+
+            }
+        aux+="</table>"; 
+
+        document.getElementById("demo").innerHTML = aux;
+        
+        //Recogemos el id de forma separada(a=[i],b=[j])y cojemos el valor en una variable c. luego cambiamos las imagenes como correspondan
+        function pulsar(x){
+            var a=x.id.substring(0,1);
+            var b=x.id.substring(1,2);
+            var c=mar[a][b];
+                if (c==1){
+                    document.getElementById(a+b).src="img/barcos.png";
+                 }else{ 
+                    document.getElementById(a+b).src="img/agua.jpg";
+
+                }
+                
+            }
+            
+    
+
+
+</script>
+
+</body>
+</html>
